@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rafique Khatri — Data & ML Engineer specializing in AI/ML, MLOps, GenAI, autonomous CI/CD and production-grade ML systems.">
+<meta name="theme-color" content="#08111f">
+<title>Rafique Khatri — Data & ML Engineer | MLOps · GenAI · CI/CD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#07111f;
+  --bg2:#0b1627;
+  --surface:rgba(17,30,50,.72);
+  --surface-solid:#101e32;
+  --surface-2:#14253e;
+  --border:rgba(148,163,184,.17);
+  --border-strong:rgba(55,214,196,.42);
+  --text:#edf4fb;
+  --muted:#9aaac0;
+  --muted-2:#71839c;
+  --teal:#39dfca;
+  --cyan:#66d9ff;
+  --amber:#ffc15a;
+  --shadow:0 24px 70px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--text);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.65;background:
+    radial-gradient(circle at 10% 0%,rgba(55,214,196,.09),transparent 30%),
+    radial-gradient(circle at 90% 12%,rgba(102,217,255,.07),transparent 28%),
+    linear-gradient(180deg,var(--bg),#081321 52%,#07111f);
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;
+  background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+  background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent 75%);
+}
+a{color:inherit}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.mono{font-family:"JetBrains Mono",monospace}
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(7,17,31,.76);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:"JetBrains Mono",monospace;font-weight:700;letter-spacing:-.03em;font-size:15px}
+.logo b{color:var(--teal)}
+.cursor{display:inline-block;width:7px;height:16px;background:var(--amber);vertical-align:-3px;margin-left:4px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.navlinks{display:flex;gap:28px;color:var(--muted);font-size:14px;font-weight:500}
+.navlinks a{text-decoration:none;transition:.2s}
+.navlinks a:hover{color:var(--teal)}
+
+.hero{padding:105px 0 88px;position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;padding:7px 11px;
+  border:1px solid var(--border);background:rgba(16,30,50,.62);
+  border-radius:999px;color:var(--muted);font:500 12px "JetBrains Mono",monospace;
+  box-shadow:0 8px 30px rgba(0,0,0,.12)
+}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px rgba(57,223,202,.1)}
+h1{font-size:clamp(44px,7vw,78px);line-height:1.02;letter-spacing:-.055em;margin:24px 0 14px;max-width:900px}
+.gradient{background:linear-gradient(100deg,#fff 15%,#bceef0 55%,#6bdcff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-role{font-size:clamp(19px,2.4vw,27px);font-weight:600;color:var(--amber);margin:0 0 22px}
+.hero-copy{max-width:850px;color:var(--muted);font-size:18px;margin:0 0 30px}
+.hero-copy strong{color:var(--text);font-weight:600}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:45px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 17px;border-radius:10px;border:1px solid var(--border);text-decoration:none;font-weight:600;font-size:14px;background:rgba(16,30,50,.72);transition:transform .2s,border-color .2s,background .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--border-strong);background:rgba(20,37,62,.9)}
+.btn.primary{background:linear-gradient(135deg,rgba(57,223,202,.16),rgba(102,217,255,.09));border-color:rgba(57,223,202,.4);color:#dffefa}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:16px;overflow:hidden;background:rgba(12,25,42,.65);box-shadow:var(--shadow)}
+.metric{padding:22px 20px;border-right:1px solid var(--border)}
+.metric:last-child{border-right:0}
+.metric strong{display:block;font-size:25px;letter-spacing:-.03em}
+.metric span{color:var(--muted-2);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+
+section{padding:88px 0;border-top:1px solid var(--border)}
+.section-kicker{color:var(--teal);font:600 12px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+h2{font-size:clamp(30px,4vw,43px);letter-spacing:-.04em;line-height:1.1;margin:0 0 15px}
+.section-intro{color:var(--muted);max-width:760px;margin:0 0 38px;font-size:16px}
+
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+.card{background:linear-gradient(145deg,rgba(18,34,55,.82),rgba(11,23,39,.72));border:1px solid var(--border);border-radius:18px;padding:28px;box-shadow:0 16px 45px rgba(0,0,0,.16)}
+.card p{color:var(--muted);margin:0 0 16px}
+.card p:last-child{margin-bottom:0}
+.highlight{color:var(--text);font-weight:600}
+.impact{border-left:3px solid var(--teal)}
+.impact-label{font:600 12px "JetBrains Mono",monospace;color:var(--amber);margin-bottom:10px}
+.impact-text{font-size:20px;line-height:1.45;color:var(--text)!important;font-weight:600}
+
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.skill{padding:22px;border:1px solid var(--border);border-radius:16px;background:rgba(16,30,50,.62);transition:transform .2s,border-color .2s}
+.skill:hover{transform:translateY(-3px);border-color:rgba(57,223,202,.3)}
+.skill h3{margin:0 0 13px;color:var(--amber);font:600 14px "JetBrains Mono",monospace}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:7px 10px;border:1px solid var(--border);background:rgba(7,17,31,.55);border-radius:8px;font-size:13px;color:#dce7f3}
+
+.work-list{display:grid;gap:14px}
+.work-item{display:grid;grid-template-columns:180px 1fr auto;gap:22px;align-items:start;padding:25px;border:1px solid var(--border);border-radius:16px;background:rgba(16,30,50,.58);transition:.2s}
+.work-item:hover{border-color:rgba(57,223,202,.34);transform:translateY(-2px)}
+.work-company{font:700 15px "JetBrains Mono",monospace;color:var(--text)}
+.work-desc{color:var(--muted);font-size:14px}
+.status{font:600 11px "JetBrains Mono",monospace;color:var(--teal);border:1px solid rgba(57,223,202,.35);border-radius:999px;padding:5px 9px;white-space:nowrap}
+
+.cta{position:relative;overflow:hidden;border:1px solid rgba(57,223,202,.28);border-radius:22px;padding:42px;background:linear-gradient(135deg,rgba(57,223,202,.08),rgba(102,217,255,.04) 45%,rgba(16,30,50,.7))}
+.cta::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-120px;top:-140px;background:rgba(57,223,202,.12);filter:blur(8px)}
+.cta h2{max-width:760px}
+.cta p{color:var(--muted);max-width:720px;font-size:17px}
+.cta strong{color:var(--text)}
+
+footer{padding:50px 0 65px;border-top:1px solid var(--border)}
+.contact-head{font:500 13px "JetBrains Mono",monospace;color:var(--muted);margin-bottom:18px}
+.contact-links{display:flex;gap:12px;flex-wrap:wrap}
+.contact-links a{text-decoration:none;padding:10px 13px;border:1px solid var(--border);border-radius:9px;font-size:14px;background:rgba(16,30,50,.58);transition:.2s}
+.contact-links a:hover{color:var(--teal);border-color:rgba(57,223,202,.4);transform:translateY(-2px)}
+.foot-note{margin-top:26px;color:var(--muted-2);font:12px "JetBrains Mono",monospace}
+
+.reveal{opacity:0;transform:translateY(16px);animation:reveal .7s ease forwards}
+@keyframes reveal{to{opacity:1;transform:none}}
+.delay1{animation-delay:.08s}.delay2{animation-delay:.16s}.delay3{animation-delay:.24s}
+
+@media(max-width:800px){
+  .wrap{width:min(100% - 28px,1120px)}
+  .navlinks{gap:15px}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(2){border-right:0}
+  .metric:nth-child(-n+2){border-bottom:1px solid var(--border)}
+  .about-grid,.skills-grid{grid-template-columns:1fr}
+  .work-item{grid-template-columns:1fr;gap:9px}
+  .status{justify-self:start}
+}
+@media(max-width:560px){
+  nav{height:64px}
+  .navlinks a:nth-child(1){display:none}
+  .hero{padding:75px 0 65px}
+  h1{font-size:44px}
+  .hero-copy{font-size:16px}
+  section{padding:65px 0}
+  .metric{padding:18px 14px}
+  .metric strong{font-size:21px}
+  .card,.cta{padding:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <nav class="wrap">
+    <div class="logo">rafique.<b>mlops</b><span class="cursor"></span></div>
+    <div class="navlinks">
+      <a href="#about">Profile</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#impact">Impact</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow reveal"><i></i> DATA & ML ENGINEER · PRODUCTION FOCUSED</div>
+      <h1 class="reveal delay1"><span class="gradient">Turning ML Prototypes</span><br>into Production-Grade Systems</h1>
+      <p class="hero-role reveal delay2">AI/ML · MLOps · GenAI · Autonomous CI/CD</p>
+      <p class="hero-copy reveal delay2">
+        <strong>15+ years in Data Engineering · 7+ years specializing in AI/ML, MLOps & Autonomous CI/CD.</strong>
+        I build the infrastructure that takes machine learning from notebook to production — and keeps it running reliably at enterprise scale.
+      </p>
+      <div class="actions reveal delay3">
+        <a class="btn primary" href="#contact">Let's build something →</a>
+        <a class="btn" href="#expertise">Explore expertise</a>
+        <a class="btn" href="#impact">View enterprise impact</a>
+      </div>
+
+      <div class="metrics reveal delay3">
+        <div class="metric"><strong>15+</strong><span>Years · Data Engineering</span></div>
+        <div class="metric"><strong>7+</strong><span>Years · AI / ML</span></div>
+        <div class="metric"><strong>End-to-End</strong><span>ML Lifecycle</span></div>
+        <div class="metric"><strong>Enterprise</strong><span>Production Scale</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-kicker">// 01 · profile</div>
+      <h2>Engineering ML for the real world.</h2>
+      <p class="section-intro">From data pipelines and feature engineering to deployment, testing and monitoring — with reliability designed into the lifecycle.</p>
+      <div class="about-grid">
+        <div class="card">
+          <p>My work spans <span class="highlight">streaming media, consumer goods, and healthcare/insurance</span>, where I've designed end-to-end ML pipelines, automated CI/CD workflows, and built the testing & monitoring systems that keep models trustworthy in the real world.</p>
+          <p>I focus on the engineering layer that makes AI useful beyond a successful notebook: <span class="highlight">repeatable pipelines, automated delivery, observable systems, and dependable production operations.</span></p>
+        </div>
+        <div class="card impact">
+          <div class="impact-label">ENGINEERING MINDSET</div>
+          <p class="impact-text">Build it. Test it. Deploy it. Monitor it. Automate it.</p>
+          <p>Production-grade ML is not only about model accuracy — it's about making the entire system reliable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="expertise">
+    <div class="wrap">
+      <div class="section-kicker">// 02 · core expertise</div>
+      <h2>Technical toolkit</h2>
+      <p class="section-intro">A production-oriented stack spanning data engineering, MLOps, GenAI, testing and model delivery.</p>
+      <div class="skills-grid">
+        <div class="skill">
+          <h3>DATA ENGINEERING</h3>
+          <div class="chips"><span class="chip">Pipeline design</span><span class="chip">ETL / ELT</span><span class="chip">Feature engineering</span><span class="chip">Large-scale data systems</span></div>
+        </div>
+        <div class="skill">
+          <h3>MLOPS & CI/CD</h3>
+          <div class="chips"><span class="chip">Autonomous pipelines</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">MLflow</span><span class="chip">Model monitoring</span></div>
+        </div>
+        <div class="skill">
+          <h3>AI / GENAI</h3>
+          <div class="chips"><span class="chip">LLMs</span><span class="chip">RAG</span><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">Agentic AI · CrewAI</span><span class="chip">Amazon Bedrock</span></div>
+        </div>
+        <div class="skill">
+          <h3>TESTING & RELIABILITY</h3>
+          <div class="chips"><span class="chip">Pytest automation</span><span class="chip">Pipeline testing</span><span class="chip">ML model testing</span><span class="chip">Quality gates</span></div>
+        </div>
+        <div class="skill">
+          <h3>FRAMEWORKS</h3>
+          <div class="chips"><span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">Foundation models</span><span class="chip">Fine-tuning</span><span class="chip">Deployment</span></div>
+        </div>
+        <div class="skill">
+          <h3>DELIVERY PHILOSOPHY</h3>
+          <div class="chips"><span class="chip">Notebook → Production</span><span class="chip">Automation-first</span><span class="chip">Observable ML</span><span class="chip">Enterprise scale</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="wrap">
+      <div class="section-kicker">// 03 · enterprise impact</div>
+      <h2>Production systems. Enterprise outcomes.</h2>
+      <p class="section-intro">Delivered production ML systems for a global streaming platform, a Fortune 500 beverage company, and a leading health insurer.</p>
+      <div class="work-list">
+        <div class="work-item">
+          <div class="work-company">GLOBAL STREAMING</div>
+          <div class="work-desc">Built and modernized ML delivery workflows, helping move model training and deployment toward repeatable, automated production operations.</div>
+          <div class="status">DELIVERED</div>
+        </div>
+        <div class="work-item">
+          <div class="work-company">FORTUNE 500 BEVERAGE</div>
+          <div class="work-desc">Supported ML pipeline modernization and automated deployment workflows for enterprise-scale use cases.</div>
+          <div class="status">DELIVERED</div>
+        </div>
+        <div class="work-item">
+          <div class="work-company">HEALTH INSURER</div>
+          <div class="work-desc">Built production-oriented ML workflows with testing and monitoring designed to improve reliability in real-world model operations.</div>
+          <div class="status">DELIVERED</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <div class="section-kicker">// 04 · let's connect</div>
+        <h2>Have an ML idea stuck in a notebook?</h2>
+        <p>Let's get it into production — <strong>reliably, tested, and automated.</strong></p>
+        <div class="actions" style="margin:24px 0 0">
+          <a class="btn primary" href="#contact">Start a conversation →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-kicker">// 05 · contact</div>
+    <div class="contact-head">rafique@mlops:~$ contact --me</div>
+    <div class="contact-links">
+      <a href="mailto:your.email@example.com">your.email@example.com</a>
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <div class="foot-note">Built for GitHub Pages · Data & ML Engineering · MLOps · GenAI</div>
+  </div>
+</footer>
+</body>
+</html>

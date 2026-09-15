@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafique Khatri — AI/ML · MLOps · CI/CD Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1220;
+    --surface:#121A2B;
+    --surface-2:#17203A;
+    --border:#232D45;
+    --text:#E7EBF3;
+    --text-muted:#8D97AE;
+    --amber:#F2A93B;
+    --teal:#37D6C4;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  .mono{ font-family:'JetBrains Mono', monospace; }
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* NAV */
+  header{
+    position:sticky;
+    top:0;
+    background:rgba(11,18,32,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+    z-index:10;
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+  }
+  .logo{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:-0.02em;
+  }
+  .logo .cursor{
+    display:inline-block;
+    width:8px;
+    background:var(--amber);
+    animation:blink 1.1s steps(1) infinite;
+    margin-left:2px;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .navlinks{
+    display:flex;
+    gap:28px;
+    font-size:14px;
+    color:var(--text-muted);
+  }
+  .navlinks a{ text-decoration:none; }
+  .navlinks a:hover{ color:var(--text); }
+
+  /* HERO */
+  .hero{
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--border);
+  }
+  .prompt-line{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    color:var(--teal);
+    margin-bottom:18px;
+  }
+  .prompt-line .path{ color:var(--text-muted); }
+
+  h1.name{
+    font-family:'JetBrains Mono', monospace;
+    font-size:clamp(34px, 6vw, 54px);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    margin:0 0 10px;
+    line-height:1.1;
+  }
+
+  .role{
+    font-size:18px;
+    color:var(--amber);
+    margin:0 0 22px;
+    font-weight:500;
+  }
+
+  .bio{
+    max-width:62ch;
+    color:var(--text-muted);
+    font-size:16px;
+    margin:0 0 32px;
+  }
+
+  /* STAT ROW */
+  .stat-row{
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    margin:0 0 40px;
+  }
+  .stat-item{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .stat-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:24px;
+    font-weight:700;
+    color:var(--text);
+  }
+  .stat-label{
+    font-size:13px;
+    color:var(--text-muted);
+  }
+
+  /* PIPELINE STEPPER */
+  .pipeline{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:0;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+  }
+  .stage{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 16px;
+    border:1px solid var(--border);
+    border-radius:4px;
+    color:var(--text-muted);
+    background:var(--surface);
+  }
+  .stage .dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--border);
+  }
+  .stage.active{
+    color:var(--text);
+    border-color:var(--teal);
+  }
+  .stage.active .dot{
+    background:var(--teal);
+    box-shadow:0 0 0 3px rgba(55,214,196,0.15);
+  }
+  .connector{
+    width:24px;
+    height:1px;
+    background:var(--border);
+  }
+
+  /* SECTIONS */
+  section{
+    padding:64px 0;
+    border-bottom:1px solid var(--border);
+  }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:6px;
+  }
+  h2{
+    font-size:26px;
+    margin:0 0 36px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  /* WORK CARDS */
+  .work-item{
+    display:grid;
+    grid-template-columns:220px 1fr auto;
+    gap:20px;
+    align-items:start;
+    padding:22px 14px;
+    margin:0 -14px;
+    border-top:1px solid var(--border);
+    border-radius:6px;
+    transition:background 0.15s ease, transform 0.15s ease;
+  }
+  .work-item:first-of-type{ border-top:none; }
+  .work-item:hover{
+    background:var(--surface);
+    transform:translateX(2px);
+  }
+
+  .work-company{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:16px;
+  }
+  .work-desc{
+    color:var(--text-muted);
+    font-size:15px;
+  }
+  .status-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--teal);
+    border:1px solid var(--teal);
+    border-radius:3px;
+    padding:3px 8px;
+    height:fit-content;
+    white-space:nowrap;
+  }
+
+  @media (max-width:640px){
+    .work-item{
+      grid-template-columns:1fr;
+      gap:8px;
+    }
+    .status-tag{ justify-self:start; }
+  }
+
+  /* AWARDS */
+  .award-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+  }
+  @media (max-width:640px){
+    .award-grid{ grid-template-columns:1fr; }
+  }
+  .award-card{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    padding:20px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:6px;
+    border-left:3px solid var(--amber);
+    transition:border-color 0.15s ease, transform 0.15s ease;
+  }
+  .award-card:hover{
+    border-color:var(--amber);
+    transform:translateY(-2px);
+  }
+  .award-icon{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    line-height:1;
+    color:var(--amber);
+    flex-shrink:0;
+    margin-top:3px;
+  }
+  .award-name{
+    font-size:15px;
+    font-weight:600;
+    color:var(--text);
+    margin:0 0 4px;
+  }
+  .award-org{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--text-muted);
+  }
+
+  /* SKILLS */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px 40px;
+  }
+  @media (max-width:640px){
+    .skill-groups{ grid-template-columns:1fr; }
+  }
+  .skill-group h3{
+    font-size:13px;
+    font-family:'JetBrains Mono', monospace;
+    color:var(--amber);
+    font-weight:500;
+    margin:0 0 14px;
+  }
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-size:13px;
+    color:var(--text);
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:4px;
+    padding:6px 12px;
+    transition:border-color 0.15s ease;
+  }
+  .chip:hover{
+    border-color:var(--teal);
+  }
+
+  /* CTA */
+  .cta-section{
+    text-align:left;
+  }
+  .cta-line{
+    font-size:20px;
+    max-width:52ch;
+    margin:0 0 28px;
+    color:var(--text);
+  }
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    color:var(--bg);
+    background:var(--teal);
+    border:none;
+    border-radius:4px;
+    padding:12px 22px;
+    text-decoration:none;
+    font-weight:700;
+    transition:background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-btn:hover{
+    background:var(--amber);
+    transform:translateY(-1px);
+    box-shadow:0 6px 24px rgba(242,169,59,0.25);
+  }
+
+  /* CONTACT / FOOTER */
+  footer{
+    padding:56px 0 64px;
+  }
+  .contact-line{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    color:var(--text-muted);
+    margin-bottom:24px;
+  }
+  .contact-links{
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .contact-links a{
+    text-decoration:none;
+    font-size:15px;
+    border-bottom:1px solid var(--border);
+    padding-bottom:2px;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  .contact-links a:hover{
+    border-color:var(--amber);
+    color:var(--amber);
+  }
+  .foot-note{
+    margin-top:40px;
+    font-size:12px;
+    color:var(--text-muted);
+    font-family:'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">rafique.khatri<span class="cursor">&nbsp;</span></div>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#awards">Awards</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap" style="border-bottom:1px solid var(--border);">
+    <div class="prompt-line"><span class="path">rafique@mlops</span>:~$ whoami</div>
+    <h1 class="name">Rafique Khatri</h1>
+    <p class="role">Data &amp; ML Engineer — Turning ML Prototypes into Production-Grade Systems</p>
+    <p class="bio">15+ years in data engineering, 7+ years specializing in AI/ML, MLOps and autonomous CI/CD. I build the infrastructure that takes machine learning models out of notebooks and into production — training pipelines, deployment automation, and monitoring that holds up under real traffic. My work spans streaming media, consumer goods, energy, retail, medical devices, insurance, and healthcare, where I design end-to-end ML pipelines, automate CI/CD workflows, and build the testing and monitoring systems that keep models trustworthy in the real world.</p>
+
+    <div class="stat-row">
+      <div class="stat-item">
+        <span class="stat-num">15+</span>
+        <span class="stat-label">yrs data engineering</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">7+</span>
+        <span class="stat-label">yrs AI/ML &amp; MLOps</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">13</span>
+        <span class="stat-label">enterprise clients delivered</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4</span>
+        <span class="stat-label">TCS awards earned</span>
+      </div>
+    </div>
+
+    <div class="pipeline" id="pipeline">
+      <div class="stage" data-stage="0"><span class="dot"></span>BUILD</div>
+      <div class="connector"></div>
+      <div class="stage" data-stage="1"><span class="dot"></span>TEST</div>
+      <div class="connector"></div>
+      <div class="stage" data-stage="2"><span class="dot"></span>DEPLOY</div>
+      <div class="connector"></div>
+      <div class="stage" data-stage="3"><span class="dot"></span>MONITOR</div>
+    </div>
+  </section>
+
+  <section class="wrap" id="work">
+    <div class="section-label">// 01</div>
+    <h2>Selected work</h2>
+
+    <div class="work-item">
+      <div class="work-company">Netflix</div>
+      <div class="work-desc">Built CI/CD pipelines for model training and retraining jobs, cutting release time from hours to minutes and removing manual deployment steps.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Coca-Cola</div>
+      <div class="work-desc">Set up MLOps infrastructure for demand-forecasting models across regional markets, with automated retraining and drift monitoring built in.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Medibank</div>
+      <div class="work-desc">Delivered automated ML pipelines for claims-risk models, with testing gates and rollback built into every deployment.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Thomson Reuters</div>
+      <div class="work-desc">Engineered large-scale data pipelines powering legal and financial research products, with feature stores built for low-latency retrieval.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">ExxonMobil</div>
+      <div class="work-desc">Modernized legacy data infrastructure into cloud-native ETL/ELT pipelines, improving throughput for operational and forecasting workloads.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Walmart</div>
+      <div class="work-desc">Automated CI/CD for demand and inventory forecasting models at retail scale, with monitoring dashboards for real-time drift detection.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Nike</div>
+      <div class="work-desc">Built end-to-end MLOps pipelines for personalization and recommendation models, integrating automated testing across the release cycle.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Nielsen</div>
+      <div class="work-desc">Designed large-scale data engineering pipelines for audience-measurement analytics, supporting high-volume ingestion and feature engineering.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Arthrex Inc.</div>
+      <div class="work-desc">Built data pipelines and ML monitoring infrastructure for medical device analytics, with validation gates suited to regulated environments.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Baker Hughes Oilfield Operations</div>
+      <div class="work-desc">Automated CI/CD for predictive-maintenance and equipment-monitoring models across oilfield operations, reducing manual release overhead.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Symbion Pty Ltd</div>
+      <div class="work-desc">Designed ETL/ELT pipelines and feature engineering workflows for pharmaceutical distribution and supply-chain analytics.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Stryker Corporation</div>
+      <div class="work-desc">Delivered MLOps infrastructure and automated testing for medical technology data pipelines, with monitoring built for compliance-grade reliability.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-company">Old Mutual Life Assurance (South Africa)</div>
+      <div class="work-desc">Built production ML pipelines and CI/CD automation for actuarial and risk models, with monitoring for long-running financial workloads.</div>
+      <div class="status-tag">shipped</div>
+    </div>
+  </section>
+
+  <section class="wrap" id="awards">
+    <div class="section-label">// 02</div>
+    <h2>Awards &amp; recognition</h2>
+
+    <div class="award-grid">
+      <div class="award-card">
+        <span class="award-icon mono">01</span>
+        <div>
+          <p class="award-name">AI Enabler Award</p>
+          <span class="award-org">Tata Consultancy Services</span>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <span class="award-icon mono">02</span>
+        <div>
+          <p class="award-name">Service Commitment Award</p>
+          <span class="award-org">Tata Consultancy Services</span>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <span class="award-icon mono">03</span>
+        <div>
+          <p class="award-name">AI Hackathon Award</p>
+          <span class="award-org">Tata Consultancy Services</span>
+        </div>
+      </div>
+
+      <div class="award-card">
+        <span class="award-icon mono">04</span>
+        <div>
+          <p class="award-name">On-The-Spot Team Award</p>
+          <span class="award-org">Tata Consultancy Services</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="skills">
+    <div class="section-label">// 03</div>
+    <h2>Skills</h2>
+
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>AI / ML</h3>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">PyTorch</span>
+          <span class="chip">TensorFlow</span>
+          <span class="chip">Scikit-learn</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>AI / GenAI</h3>
+        <div class="chips">
+          <span class="chip">LLMs</span>
+          <span class="chip">RAG</span>
+          <span class="chip">LangChain</span>
+          <span class="chip">LangGraph</span>
+          <span class="chip">Agentic AI</span>
+          <span class="chip">CrewAI</span>
+          <span class="chip">Amazon Bedrock</span>
+          <span class="chip">Vector DB</span>
+          <span class="chip">Prompt Engineering</span>
+          <span class="chip">FDE</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>MLOps</h3>
+        <div class="chips">
+          <span class="chip">MLflow</span>
+          <span class="chip">Kubeflow</span>
+          <span class="chip">SageMaker</span>
+          <span class="chip">Vertex AI</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>CI / CD</h3>
+        <div class="chips">
+          <span class="chip">GitHub Actions</span>
+          <span class="chip">Jenkins</span>
+          <span class="chip">GitLab CI</span>
+          <span class="chip">ArgoCD</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Cloud & Infra</h3>
+        <div class="chips">
+          <span class="chip">AWS</span>
+          <span class="chip">GCP</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Kubernetes</span>
+          <span class="chip">Terraform</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Testing & Reliability</h3>
+        <div class="chips">
+          <span class="chip">Pytest</span>
+          <span class="chip">Data Pipeline Testing</span>
+          <span class="chip">Model Validation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap cta-section">
+    <div class="section-label">// 04</div>
+    <p class="cta-line">Have an ML idea stuck in a notebook? Let's get it into production — reliably, tested, and automated.</p>
+    <a href="#contact" class="cta-btn">Get in touch ↓</a>
+  </section>
+
+  <footer class="wrap" id="contact">
+    <div class="section-label">// 05</div>
+    <div class="contact-line">rafique@mlops:~$ contact --me</div>
+    <div class="contact-links">
+      <a href="mailto:rafique.khatri@outlook.com">rafique.khatri@outlook.com</a>
+      <a href="tel:+919477965030">+91 94779 65030</a>
+      <a href="https://rafique-khatri.github.io" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/rafique-khatri" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="foot-note">Built and deployed with GitHub Pages.</div>
+  </footer>
+</main>
+
+<script>
+  // One orchestrated reveal: fill the pipeline stages in sequence on load.
+  document.addEventListener('DOMContentLoaded', function(){
+    var stages = document.querySelectorAll('#pipeline .stage');
+    stages.forEach(function(stage, i){
+      setTimeout(function(){
+        stage.classList.add('active');
+      }, 300 + i * 220);
+    });
+  });
+</script>
+
+</body>
+</html>
